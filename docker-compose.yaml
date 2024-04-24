@@ -1,0 +1,76 @@
+version: '3'
+
+services:
+  laravel-mobility-app:
+    build:
+      context: ./laravel_project
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./laravel_project:/var/www/html
+    depends_on:
+      - mobilite-project-db
+    networks:
+      - mobility
+    command: 
+      - "sh"
+      - "-c"
+      - "php artisan migrate && php artisan serve --host=0.0.0.0 --port=80"  
+
+  mobilite-project-db:
+    image: mysql:latest
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: projet_de_stage
+      MYSQL_USER: root
+      #MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      #SERVICE_TAG: dev
+      # MYSQL_SERVICE_NAME: mysql
+    networks:
+      - mobility
+      
+    
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mobilite-project-db
+    networks:
+      - mobility
+      
+volumes:
+  db_data:
+
+networks:
+  mobility:
+
+#docker-compose exec laravel-mobility-app php artisan migrate
+# version: "3"
+
+# services:
+#   laravel:
+#     build:
+#       context: ./laravel_project_backend
+#       dockerfile: Dockerfile
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - ./laravel_project_backend:/var/www/html
+#     depends_on:
+#       - mysql
+
+#   mysql:
+#     image: mysql:latest
+#     ports:
+#       - "3306:3306"
+#     environment:
+#       MYSQL_DATABASE: 'projet_de_stage'
+#       MYSQL_USER: 'root'
+#       MYSQL_ROOT_PASSWORD: ''
