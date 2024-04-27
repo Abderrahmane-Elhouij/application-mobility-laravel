@@ -1,9 +1,9 @@
-@extends('components.doct_dashboard.main_dashboard')
+{{-- @extends('components.enseignant.ens_dashboard.main_ens_dashboard')
 
 @section('content')
+
     <div class="container-fluid">
         <div class="row">
-            <!-- Sidebar -->
             <nav class="col-md-2 d-none d-md-block sidebar">
                 <a class="navbar-brand" href="#">
                     <i class="fas fa-home" style="color: white;"></i> <span style="color: white;">Acceuil</span>
@@ -11,32 +11,27 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard.view', 'welcome') }}">
+                            <a class="nav-link" href="{{ route('dashboard_ens.view', 'welcome') }}">
                                 <i class="fas fa-user"></i> Bienvenue {{ auth()->user()->nom }}
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard.view', 'condidat') }}">
+                            <a class="nav-link" href="{{ route('dashboard_ens.view', 'condidat') }}">
                                 <i class="fas fa-users"></i> Candidatures
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard.view', 'these') }}">
-                                <i class="fas fa-file-alt"></i> Theses
+                            <a class="nav-link" href="{{ route('dashboard_ens.view', 'publication') }}">
+                                <i class="fas fa-book"></i> Publications
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard.view', 'publication') }}">
-                                <i class="fas fa-book"></i> Publications 
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard.view', 'communication') }}">
+                            <a class="nav-link" href="{{ route('dashboard_ens.view', 'communication') }}">
                                 <i class="fas fa-comment"></i> Communications
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard.view', 'mobilite') }}">
+                            <a class="nav-link" href="{{ route('dashboard_ens.view', 'mobilite') }}">
                                 <i class="fas fa-bus"></i> Mobilites
                             </a>
                         </li>
@@ -60,4 +55,4 @@
             </main>
         </div>
     </div>
-@endsection
+@endsection --}}

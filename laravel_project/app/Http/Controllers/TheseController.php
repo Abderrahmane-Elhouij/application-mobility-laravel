@@ -33,7 +33,7 @@ class TheseController extends Controller
 
         These::create($formFields);
 
-        $pubrevueController = new PublicationController();
-        return $pubrevueController->store($request);
+        $mobiliteController = new MobiliteController();
+        return $mobiliteController->store($request);
     }
 }

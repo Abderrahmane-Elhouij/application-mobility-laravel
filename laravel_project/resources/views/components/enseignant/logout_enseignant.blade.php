@@ -158,11 +158,11 @@
     </div>
 
     <a href="/dashboard/view/welcome" class="home-link">
-        <span class="button-icon">&#x1F3E0;</span> <!-- Unicode for house icon -->
+        <span class="button-icon">&#x1F3E0;</span>
         Home
     </a>
     <div class="button-container">
-        <a href="{{ route('generatePDF') }}" class="download-link" target="_blank">télécharger la candidature</a>
+        <a href="{{ route('generateEnsPDF') }}" class="download-link" target="_blank">télécharger la candidature</a>
         <form action="{{ route('logout') }}" method="POST">
             @csrf
             <button type="submit">Logout</button>

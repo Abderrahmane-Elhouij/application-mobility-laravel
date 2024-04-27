@@ -2,11 +2,13 @@
 
 namespace App\Notifications;
 
+use App\Models\Doctorant;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Grosv\LaravelPasswordlessLogin\LoginUrl;
 use Illuminate\Notifications\Messages\MailMessage;
+use App\Models\Enseignant;
 
 class SendMagicLinkNotification extends Notification
 {
@@ -41,9 +43,20 @@ class SendMagicLinkNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        $doctorant = Doctorant::where('email', $notifiable->email)->first();
+
+        $enseignant = Enseignant::where('email', $notifiable->email)->first();
+
+        $redirectUrl = '/bienvenue';
+
+        if ($doctorant) {
+            $redirectUrl = '/dashboard/view/welcome';
+        } elseif ($enseignant) {
+            $redirectUrl = '/dashboard-ens/view/welcome';
+        }
 
         $generator = new LoginUrl($notifiable);
-        $generator->setRedirectUrl('/mobility');
+        $generator->setRedirectUrl($redirectUrl);
         $url = $generator->generate();
 
         return (new MailMessage)

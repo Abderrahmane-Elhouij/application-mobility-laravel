@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mobilite extends Model
+class MobiliteEns extends Model
 {
     use HasFactory;
 
-    protected $table = 'mobilites';
+    protected $table = 'mobilite_enseignant';
 
     protected $fillable = [
         'user_id',
@@ -20,11 +20,11 @@ class Mobilite extends Model
         'date_fin',
         'carte_mobilite',
         'joindre_justicatif',
-        'invitation'
+        'document'
     ];
 
-    public function doctorant()
+    public function enseignant()
     {
-        return $this->belongsTo(Doctorant::class, 'user_id');
+        return $this->belongsTo(Enseignant::class, 'user_id');
     }
 }

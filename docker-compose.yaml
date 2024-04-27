@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   laravel-mobility-app:
@@ -6,17 +6,13 @@ services:
       context: ./laravel_project
       dockerfile: Dockerfile
     ports:
-      - "8080:80"
+      - "8080:8000"  
     volumes:
-      - ./laravel_project:/var/www/html
+      - ./laravel_project/storage:/var/www/html/storage  
     depends_on:
       - mobilite-project-db
     networks:
       - mobility
-    command: 
-      - "sh"
-      - "-c"
-      - "php artisan migrate && php artisan serve --host=0.0.0.0 --port=80"  
 
   mobilite-project-db:
     image: mysql:latest
@@ -28,14 +24,10 @@ services:
     environment:
       MYSQL_DATABASE: projet_de_stage
       MYSQL_USER: root
-      #MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
-      #SERVICE_TAG: dev
-      # MYSQL_SERVICE_NAME: mysql
     networks:
       - mobility
-      
-    
+
   phpmyadmin:
     image: phpmyadmin:latest
     ports:
@@ -44,12 +36,13 @@ services:
       PMA_HOST: mobilite-project-db
     networks:
       - mobility
-      
+
 volumes:
   db_data:
 
 networks:
   mobility:
+
 
 #docker-compose exec laravel-mobility-app php artisan migrate
 # version: "3"

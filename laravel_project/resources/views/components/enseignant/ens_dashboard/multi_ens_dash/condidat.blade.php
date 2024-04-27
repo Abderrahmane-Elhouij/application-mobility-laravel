@@ -1,4 +1,4 @@
-@extends('components.doct_dashboard.dashboard')
+@extends('components.enseignant.ens_dashboard.main_ens_dashboard')
 
 @section('dynamic-content')
     <div class="container mt-5">
@@ -9,14 +9,12 @@
                     <th scope="col">ID</th>
                     <th scope="col">Structure de recherche</th>
                     <th scope="col">Etablissement</th>
-                    <th scope="col">CED</th>
-                    <th scope="col">FD</th>
                     <th scope="col">CRÉÉ À</th>
                 </tr>
             </thead>
             <tbody>
                 @php
-                    $condidats = \App\Models\Condidat::where('user_id', auth()->id())->get();
+                    $condidats = \App\Models\CondidatEns::where('user_id', auth()->id())->get();
                 @endphp
                 @if ($condidats->count() > 0)
                     @foreach ($condidats->sortByDesc('created_at') as $condidat)
@@ -24,8 +22,6 @@
                             <td>{{ $condidat->id }}</td>
                             <td>{{ $condidat->structure_de_recherche }}</td>
                             <td>{{ $condidat->etablissement }}</td>
-                            <td>{{ $condidat->ced }}</td>
-                            <td>{{ $condidat->fd }}</td>
                             <td>{{ $condidat->created_at->format('Y-m-d H:i:s') }}</td>
                         </tr>
                     @endforeach

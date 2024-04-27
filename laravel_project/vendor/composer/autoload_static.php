@@ -616,6 +616,7 @@ class ComposerStaticInitfe33f98a750b8c5a51b30c78bd3fab21
         'App\\Http\\Controllers\\CommunicationController' => __DIR__ . '/../..' . '/app/Http/Controllers/CommunicationController.php',
         'App\\Http\\Controllers\\CondidatController' => __DIR__ . '/../..' . '/app/Http/Controllers/CondidatController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\DoctorantController' => __DIR__ . '/../..' . '/app/Http/Controllers/DoctorantController.php',
         'App\\Http\\Controllers\\EnseignatController' => __DIR__ . '/../..' . '/app/Http/Controllers/EnseignatController.php',
         'App\\Http\\Controllers\\FormDoctController' => __DIR__ . '/../..' . '/app/Http/Controllers/FormDoctController.php',

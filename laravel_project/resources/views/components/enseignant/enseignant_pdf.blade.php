@@ -131,28 +131,8 @@
                 <p><strong>Prénom :</strong> {{ $condidat->prenom }}</p>
                 <p><strong>Structure de recherche :</strong> {{ $condidat->structure_de_recherche }}</p>
                 <p><strong>Établissement :</strong> {{ $condidat->etablissement }}</p>
-                <p><strong>CED :</strong> {{ $condidat->ced }}</p>
-                <p><strong>Formation doctorale :</strong> {{ $condidat->fd }}</p>
                 <p><strong>E-mail :</strong> {{ $condidat->email }}</p>
-            </div>
-        </div>
-
-        <!-- Other sections go here -->
-        <div class="form-section">
-            <h5>Information concernant la thèse</h5>
-            <hr>
-            <div>
-                <p><strong>Titre de la thèse :</strong> {{ $these->titre }}</p>
-                <p><strong>Nom et prénom de l'encadrant :</strong> {{ $these->nom_encadrant }}
-                    {{ $these->prenom_encadrant }}</p>
-                <p><strong>Date de la 1ère inscription en thèse :</strong> {{ $these->date_inscription }}</p>
-            </div>
-        </div>
-
-        <div class="form-section">
-            <h6>Description du sujet de thèse (deux pages max)</h6>
-            <div>
-                <p><strong>Description du sujet de thèse :</strong> {{ $these->description_sujet }}</p>
+                <p><strong>Telephone :</strong> {{ $condidat->telephone }}</p>
             </div>
         </div>
 
@@ -160,13 +140,19 @@
             <h6>Description des travaux de recherche et résultats attendus durant la mobilité</h6>
             <div>
                 <p><strong>Description des travaux de recherche et résultats attendus durant la
-                        mobilité :</strong> {{ $these->description_traveaux }}
+                        mobilité :</strong> {{ $condidat->description_traveaux }}
                 </p>
+            </div>
+        </div>
+        <div class="form-section">
+            <h5>Pertinence et impact</h5>
+            <div>
+                <p><strong>Pertinence et impact :</strong> {{ $condidat->pertinence_impact }}</p>
             </div>
         </div>
     </div>
 
-    <!-- Insert page break before this section -->
+
 
     <div class="page-break"></div>
 
@@ -185,14 +171,6 @@
         </div>
     </div>
 
-    <!-- Other sections go here -->
-    <div class="form-section">
-        <h5>Pertinence et impact</h5>
-        <div>
-            <p><strong>Pertinence et impact :</strong> {{ $these->pertience_et_Impact }}</p>
-        </div>
-    </div>
-
     <div class="form-section">
         <h5>Structure d'accueil pour la mobilité</h5>
         <hr>
@@ -206,7 +184,7 @@
             <p><strong>Infos supplémentaire :</strong> {{ $mobilite->joindre_justicatif }}</p>
         </div>
     </div>
-    <!-- Signature section -->
+
     <div class="form-section">
         <h5>Dates et Signatures</h5>
         <hr>
@@ -214,8 +192,8 @@
             <thead>
                 <tr>
                     <th>Chef d'etablissement</th>
-                    <th>Directeur du CED</th>
                     <th>Directeur de la Structure de Recherche</th>
+                    <th>Encadrant</th>
                 </tr>
             </thead>
             <tbody>
@@ -226,21 +204,6 @@
                 </tr>
             </tbody>
         </table><br>
-
-        <table class="signature-table">
-            <thead>
-                <tr>
-                    <th>Encadrent</th>
-                    <th>Condidat</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 
 </body>

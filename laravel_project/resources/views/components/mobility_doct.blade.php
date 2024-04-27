@@ -145,21 +145,21 @@
                 value="{{ old('date_inscriptionc') }}">
         </div>
 
-        <h3>Description du sujet de thèse (deux pages max)</h3>
-        <textarea class="form-control" name="description_sujetc" id="description_sujet" cols="30" rows="10">{{ old('description_sujetc') }}</textarea><br>
+        <h3>Description du sujet de thèse</h3>
+        <textarea class="form-control" name="description_sujetc" id="description_sujet" cols="30" rows="6">{{ old('description_sujetc') }}</textarea><br>
         <h3>Description des travaux de recherche et résultats attendus durant la mobilité</h3>
-        <textarea class="form-control" name="description_travauxc" id="description_travaux" cols="30" rows="10">{{ old('description_travauxc') }}</textarea>
+        <textarea class="form-control" name="description_travauxc" id="description_travaux" cols="30" rows="6">{{ old('description_travauxc') }}</textarea>
 
-        <h3>Production Scientifique</h3>
+        {{-- <h3>Production Scientifique</h3>
         <hr><br>
         <h4>Publication dans des revues :</h4>
         <div class="form-group">
             <label for="auteurs_publication">Les noms des auteurs :</label>
             <input type="text" class="form-control" name="auteurs_publicationc" id="auteurs_publication "
-                value="{{ old('auteurs_publicationc') }}" placeholder="nom 1, nom 2, ...">
+                value="{{ old('auteurs_publicationc') }}" placeholder="nom 1, nom 2, ..."> --}}
         </div>
         <div class="form-group">
-            <label for="titre_article">Titre de l'article :</label>
+            {{-- <label for="titre_article">Titre de l'article :</label>
             <input type="text" class="form-control" name="titre_articlec" id="titre_article"
                 value="{{ old('titre_articlec') }}">
         </div>
@@ -207,10 +207,10 @@
             <label for="date_manifestation">Date :</label>
             <input type="date" class="form-control" name="date_manifestation" id="date_manifestation"
                 value="{{ old('date_manifestation') }}">
-        </div>
+        </div> --}}
 
         <h3>Pertinence et impact</h3>
-        <textarea class="form-control" name="pertinence_impactc" id="pertinence_impact" cols="30" rows="10">{{ old('pertinence_impactc') }}</textarea>
+        <textarea class="form-control" name="pertinence_impactc" id="pertinence_impact" cols="30" rows="6">{{ old('pertinence_impactc') }}</textarea>
 
         <h3>Structure d'accueil pour la mobilité</h3>
         <div class="form-group">
@@ -258,7 +258,7 @@
             <input type="file" class="form-control-file" name="invitation" id="invitation">
         </div>
 
-        <input type="submit" class="btn btn-primary" value="submit">
+        <input type="submit" class="btn btn-primary" value="Ajouter la condidature">
 
     </form>
 </body>

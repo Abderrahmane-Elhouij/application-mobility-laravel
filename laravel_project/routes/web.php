@@ -1,11 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\FormDoctController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DoctorantController;
 use App\Http\Controllers\EnseignatController;
 use App\Http\Controllers\GoogleAuthController;
-use App\Http\Controllers\PdfController;
+use App\Http\Controllers\PublicationController;
+use App\Http\Controllers\SplitRoutesController;
+use App\Http\Controllers\CommunicationController;
+use App\Http\Controllers\PublicationEnsController;
+use App\Http\Controllers\CommunicationEnsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +28,10 @@ use App\Http\Controllers\PdfController;
 Route::get('/', function () {
     return view('home');
 })->name('home');
+
+Route::get('/bienvenue', function () {
+    return view('bienvenue');
+})->name('bienvenue');
 
 //Route::get('/home', function() {
 //    return redirect('/login-doctorant');
@@ -47,18 +57,42 @@ Route::get('/mobility', function () {
     return view('components.mobility_doct');
 })->name('mobility')->middleware('auth');
 
+Route::post('doctoroant/cree-communication', [CommunicationController::class, 'store'])->name('doctoroant-cree-communication')->middleware('auth');
+
+Route::post('doctoroant/cree-publication', [PublicationController::class, 'store'])->name('doctoroant-cree-publication')->middleware('auth');
+
 Route::post('/form-submit', [FormDoctController::class, 'submitForm'])->name('form.doct.submit')->middleware('auth');
 
 Route::get('/generate-pdf', [PdfController::class, 'generatePDF'])->name('generatePDF')->middleware('auth');
 
+// Dashboard routes
+
+Route::get('/dashboard/view/{view}', [DashboardController::class, 'renderView'])->name('dashboard.view')->middleware('auth');
+Route::get('/dashboard-ens/view/{view}', [DashboardController::class, 'renderEnsView'])->name('dashboard_ens.view')->middleware('auth');
+
 // enseignat routes
-Route::get('/login-enseignant', [EnseignatController::class, 'login'])->name('login-enseignant')->middleware('guest');
+
+Route::get('/enseignant/mobility', function () {
+    return view('components.enseignant.mobility_ens');
+})->name('mobility-ens')->middleware('auth');
+
+Route::post('/enseignant/form-submit', [FormDoctController::class, 'submitEnsForm'])->name('form.ens.submit')->middleware('auth');
+
+Route::get('/enseignant/logout', function () {
+    return view('components.enseignant.logout_enseignant');
+})->name('logout_ens')->middleware('auth');
+
+Route::get('/enseignant/generate-pdf', [PdfController::class, 'generateEnsPDF'])->name('generateEnsPDF')->middleware('auth');
+
+Route::post('/enseignant/cree-communication', [CommunicationEnsController::class, 'store'])->name('enseignant-cree-communication')->middleware('auth');
+
+Route::post('/enseignant/cree-publication', [PublicationEnsController::class, 'store'])->name('enseignant-cree-publication')->middleware('auth');
+
+// Shared routes
+
+Route::get('/decide-view',[SplitRoutesController::class, 'splitSpace'])->name('redirectToSpace');
 
 // test routes
-
-Route::get('/pdf', function () {
-    return view('partials.header');
-});
 
 Route::get('/dash', function () {
     return view('components.doct_dashboard.dashboard');

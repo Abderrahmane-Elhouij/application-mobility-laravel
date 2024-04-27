@@ -1,12 +1,12 @@
-# Use an official PHP image with Apache as a base
-FROM php:8.0-apache
+# Use an official PHP image as a base
+FROM php:8.0
 
 # Set the working directory in the container
 WORKDIR /var/www/html
 
 # Copy composer.lock and composer.json to install PHP dependencies
 COPY composer.lock composer.json /var/www/html/
-  
+
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     libpng-dev \
@@ -23,16 +23,21 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Copy existing application directory contents
 COPY . /var/www/html/
 
-# Install Laravel dependencies
-RUN composer install
+# Install Laravel dependencies and optimize autoloader
+RUN composer install --no-interaction --no-plugins --no-scripts --prefer-dist \
+    && composer dump-autoload --optimize
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage
-RUN chmod -R 775 /var/www/html/storage
+# Set permissions and create required directories
+RUN chown -R www-data:www-data /var/www/html/storage \
+    && chmod -R 775 /var/www/html/storage \
+    && mkdir -p /var/www/html/storage/framework/sessions \
+    && chmod -R 775 /var/www/html/storage/framework
 
-# Copy artisan file for Laravel commands
-COPY artisan /usr/local/bin/
-RUN chmod +x /usr/local/bin/artisan
+# Expose port 8000 for PHP's built-in server
+EXPOSE 8000
+
+# Start PHP's built-in server
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
 
 
 

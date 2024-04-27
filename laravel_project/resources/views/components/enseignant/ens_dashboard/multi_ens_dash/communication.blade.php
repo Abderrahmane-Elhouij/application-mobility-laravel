@@ -1,4 +1,4 @@
-@extends('components.doct_dashboard.dashboard')
+@extends('components.enseignant.ens_dashboard.main_ens_dashboard')
 
 @section('dynamic-content')
     <div class="container mt-5">
@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 @php
-                    $communications = \App\Models\Communication_manifestation::where('user_id', auth()->id())->get();
+                    $communications = \App\Models\CommunicationEns::where('user_id', auth()->id())->get();
                 @endphp
                 @if ($communications->count() > 0)
                     @foreach ($communications->sortByDesc('created_at') as $communication)
@@ -45,7 +45,7 @@
         <button type="button" style="background-color: #8b4513; color:white;" class="btn mt-3" id="toggleForm">Ajouter une
             communication</button>
 
-        <form action="{{ route('doctoroant-cree-communication') }}" id="communicationForm" class="mt-3"
+        <form action="{{ route('enseignant-cree-communication') }}" id="communicationForm" class="mt-3"
             style="display: none;" method="POST">
             @csrf
             <div class="row">

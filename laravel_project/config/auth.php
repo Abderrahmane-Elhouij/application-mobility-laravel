@@ -16,8 +16,6 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
-        
-        //'guard' => 'doctorants',
     ],
 
     /*
@@ -42,12 +40,17 @@ return [
             'driver' => 'session',
             'provider' => 'doctorants',
         ],
-        
+
         'doctorants' => [
             'driver' => 'session',
-            'provider' => 'doctorants', // This should match the name of your Doctorant model provider
+            'provider' => 'doctorants',
         ],
-        
+
+        'enseignant' => [
+            'driver' => 'session',
+            'provider' => 'enseignant',
+        ],
+
     ],
 
 
@@ -72,6 +75,11 @@ return [
         'doctorants' => [
             'driver' => 'eloquent',
             'model' => App\Models\Doctorant::class,
+        ],
+
+        'enseignant' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Enseignant::class,
         ],
 
         // 'users' => [

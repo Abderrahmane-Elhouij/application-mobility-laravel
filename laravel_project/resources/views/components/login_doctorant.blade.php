@@ -43,7 +43,7 @@
 <body>
     @include('partials.header')
     @if (isset($email) && $email != '')
-        <h1>Remplir les champs</h1>
+        <h1>Entrez votre adresse email</h1>
         <form action="{{ route('sub.doctorant') }}" method="POST" onsubmit="return validateEmail()">
             @csrf
 
@@ -51,7 +51,7 @@
             <input type="email" name="email" id="email" value="{{ $email }}">
             <span class="error-message" id="emailError"></span>
             <button type="submit" class="btn btn-secondary" name="submit" value="magic-link">
-                Obtenir le lien
+                Se connecter
             </button>
 
         </form>
@@ -61,7 +61,7 @@
             </div>
         @endif
     @else
-        <button type="button" onclick="authenticateWithGoogle()" class="login-with-google-btn">Continue with
+        <button type="button" onclick="authenticateWithGoogle()" class="login-with-google-btn">Continue avec
             Google</button>
 
         @if ($errors->has('email'))

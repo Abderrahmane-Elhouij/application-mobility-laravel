@@ -1,4 +1,4 @@
-@extends('components.doct_dashboard.dashboard')
+@extends('components.enseignant.ens_dashboard.main_ens_dashboard')
 
 @section('dynamic-content')
     <div class="container mt-5">
@@ -19,7 +19,7 @@
             </thead>
             <tbody>
                 @php
-                    $mobilites = \App\Models\Mobilite::where('user_id', auth()->id())->get();
+                    $mobilites = \App\Models\MobiliteEns::where('user_id', auth()->id())->get();
                 @endphp
                 @if ($mobilites->count() > 0)
                     @foreach ($mobilites->sortByDesc('created_at') as $mobilite)

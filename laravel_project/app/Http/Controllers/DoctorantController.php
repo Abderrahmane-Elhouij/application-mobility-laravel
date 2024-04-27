@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctorant;
+use App\Models\Enseignant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
@@ -46,14 +47,21 @@ class DoctorantController extends Controller
         $email = $user->getEmail();
 
         $doctorant = Doctorant::where('email', $email)->first();
+        $enseignant = Enseignant::where('email', $email)->first();
 
-        return view('components.login_doctorant', compact('email'));
+        if ($doctorant || $enseignant) {
+            return view('components.login_doctorant', compact('email'));
+        }
+
+        return redirect()->route('login-doctorant')->withErrors(['email' => 'L’e-mail fourni ne correspond à aucun utilisateur inscrit.'])
+            ->withInput();
     }
 
     public function login(Request $request)
     {
 
         if ($request->input('submit') == 'magic-link') {
+
             $user = $this->loginViaMagicLink($request);
 
             if ($user) {
@@ -61,16 +69,13 @@ class DoctorantController extends Controller
                     ->with('message', "Un lien d'authentification a été envoyé à votre adresse email");
             } else {
                 return redirect()->route('login-doctorant')
-                    ->withErrors(['email' => 'L’e-mail fourni ne correspond à aucun doctorant inscrit.'])
+                    ->withErrors(['email' => 'L’e-mail fourni ne correspond à aucun utilisateur inscrit.'])
                     ->withInput();
             }
         }
 
         $this->validateLogin($request);
 
-        // If the class is using the ThrottlesLogins trait, we can automatically throttle
-        // the login attempts for this application. We'll key this by the username and
-        // the IP address of the client making these requests into this application.
         if (
             method_exists($this, 'hasTooManyLoginAttempts') &&
             $this->hasTooManyLoginAttempts($request)
@@ -88,9 +93,6 @@ class DoctorantController extends Controller
             return $this->sendLoginResponse($request);
         }
 
-        // If the login attempt was unsuccessful we will increment the number of attempts
-        // to login and redirect the user back to the login form. Of course, when this
-        // user surpasses their maximum number of attempts they will get locked out.
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
@@ -98,19 +100,20 @@ class DoctorantController extends Controller
 
     public function loginViaMagicLink(Request $request)
     {
-        //dd($request->all()); // Dump the request data
-        $user = Doctorant::where('email', $request->input('email'))->first();
-        //$user = Doctorant::whereRaw('LOWER(email) = ?', [strtolower($request->input('email'))])->first();
+        $doctorant = Doctorant::where('email', $request->input('email'))->first();
+        $enseignant = Enseignant::where('email', $request->input('email'))->first();
 
-        //dd(DB::getQueryLog());
+        if ($doctorant) {
+            Auth::guard('doctorants')->login($doctorant);
+            $doctorant->notify(new SendMagicLinkNotification());
+            return $doctorant;
 
-        if ($user) {
-            $user->notify(new SendMagicLinkNotification());
+        } elseif ($enseignant) {
+            Auth::guard('enseignant')->login($enseignant);
+            $enseignant->notify(new SendMagicLinkNotification());
+            return $enseignant;
         } else {
-            return redirect()->route('login-doctorant')
-                ->withErrors(['email' => 'Email not found.']);
+            return null;
         }
-
-        return $user;
     }
 }

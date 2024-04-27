@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Publication_revue;
+use App\Models\PublicationEns;
 use Illuminate\Http\Request;
 
-class PublicationController extends Controller
+class PublicationEnsController extends Controller
 {
     public function store(Request $request)
     {
-        $formFields  = $request->validate([
+        $formFields = $request->validate([
             'noms_auteurs' => 'required',
             'titre_article' => 'required',
             'titre_revue' => 'required',
@@ -20,7 +20,7 @@ class PublicationController extends Controller
         ]);
         $formFields['user_id'] = auth()->id();
 
-        Publication_revue::create($formFields);
+        PublicationEns::create($formFields);
 
         return redirect()->back()->with('success', 'La publication a été créée avec succès!');
     }

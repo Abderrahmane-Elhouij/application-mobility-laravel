@@ -64,9 +64,9 @@
             </div>
         @endif
         <a href="{{ route('login-doctorant') }}" class="button">Se connecter en tant que doctorant</a><br><br>
-        <a href="{{ route('login-enseignant') }}" class="button">Se connecter en tant que enseignant</a>
+        <a href="{{ route('login-doctorant') }}" class="button">Se connecter en tant que enseignant</a>
     </div>
-    
+
 </body>
 
 </html>

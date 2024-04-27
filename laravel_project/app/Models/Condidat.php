@@ -10,7 +10,6 @@ class Condidat extends Model
     use HasFactory;
     protected $table = 'condidats';
     protected $fillable = ['user_id', 'nom', 'prenom', 'structure_de_recherche', 'etablissement', 'ced', 'fd', 'email'];
-    //public $timestamps = false;
 
     public function doctorant()
     {

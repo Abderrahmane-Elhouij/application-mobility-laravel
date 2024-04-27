@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Communication_manifestation;
+use App\Models\CommunicationEns;
 use Illuminate\Http\Request;
 
-class CommunicationController extends Controller
+class CommunicationEnsController extends Controller
 {
     public function store(Request $request)
     {
@@ -17,7 +17,7 @@ class CommunicationController extends Controller
         ]);
         $formFields['user_id'] = auth()->id();
 
-        Communication_manifestation::create($formFields);
+        CommunicationEns::create($formFields);
 
         return redirect()->back()->with('success', 'La communication a été créée avec succès!');
     }

@@ -1,4 +1,4 @@
-@extends('components.doct_dashboard.dashboard')
+@extends('components.enseignant.ens_dashboard.main_ens_dashboard')
 
 @section('dynamic-content')
     <div class="container mt-5">
@@ -24,7 +24,7 @@
             </thead>
             <tbody>
                 @php
-                    $publications = \App\Models\Publication_revue::where('user_id', auth()->id())->get();
+                    $publications = \App\Models\PublicationEns::where('user_id', auth()->id())->get();
                 @endphp
                 @if ($publications->count() > 0)
                     @foreach ($publications->sortByDesc('created_at') as $publication)
@@ -51,29 +51,29 @@
         <button type="button" class="btn mt-3" id="toggleForm" style="background-color: #8b4513; color:white;">Ajouter une
             publication</button>
 
-        <form action="{{ route('doctoroant-cree-publication') }}" id="publicationForm" class="mt-3"
+        <form action="{{ route('enseignant-cree-publication') }}" id="publicationForm" class="mt-3"
             style="display: none;" method="POST">
             @csrf
             <div class="row">
                 <div class="col-md-6">
                     <label for="titre_articlec">Titre Article:</label>
-                    <input type="text" class="form-control" id="titre_article" name="titre_article">
+                    <input type="text" class="form-control" id="titre_articlec" name="titre_article">
                 </div>
                 <div class="col-md-6">
                     <label for="auteurs_publicationc">Noms Auteurs:</label>
-                    <input type="text" class="form-control" id="noms_auteurs" name="noms_auteurs">
+                    <input type="text" class="form-control" id="auteurs_publicationc" name="noms_auteurs">
                 </div>
                 <div class="col-md-6">
                     <label for="titre_revuec">Titre Revue:</label>
-                    <input type="text" class="form-control" id="titre_revue" name="titre_revue">
+                    <input type="text" class="form-control" id="titre_revuec" name="titre_revue">
                 </div>
                 <div class="col-md-6">
                     <label for="volumec">Volume:</label>
-                    <input type="text" class="form-control" id="volume" name="volume">
+                    <input type="text" class="form-control" id="volumec" name="volume">
                 </div>
                 <div class="col-md-6">
                     <label for="numeroc">Numéro:</label>
-                    <input type="number" class="form-control" id="numero" name="numero">
+                    <input type="text" class="form-control" id="numeroc" name="numero">
                 </div>
                 <div class="col-md-6">
                     <label for="date_publicationc">Date Publication:</label>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="numeros_pagec">Numéro Page:</label>
-                    <input type="number" class="form-control" id="numeros_page" name="numero_page">
+                    <input type="text" class="form-control" id="numeros_pagec" name="numero_page">
                 </div>
                 <div class="col-12 mt-3">
                     <button type="submit" class="btn"
