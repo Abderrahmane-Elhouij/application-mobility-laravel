@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('Publications_revues_enseignant', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('enseignant')->onDelete('cascade');
             $table->string('titre_article');
             $table->string('noms_auteurs');
             $table->string('titre_revue');

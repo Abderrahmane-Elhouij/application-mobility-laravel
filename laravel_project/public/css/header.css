@@ -3,10 +3,9 @@
     border-radius: 5px;
     overflow: hidden;
     height: 100px;
-    /* Set the height of the container */
     display: flex;
     align-items: center;
-    /* Center items vertically */
+    background-color: rgb(247, 208, 175);
 }
 
 .container img {

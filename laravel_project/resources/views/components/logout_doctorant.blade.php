@@ -158,8 +158,8 @@
     </div>
 
     <a href="/dashboard/view/welcome" class="home-link">
-        <span class="button-icon">&#x1F3E0;</span> <!-- Unicode for house icon -->
-        Home
+        <span class="button-icon">&#x1F3E0;</span>
+        Accueil
     </a>
     <div class="button-container">
         <a href="{{ route('generatePDF') }}" class="download-link" target="_blank">télécharger la candidature</a>

@@ -9,6 +9,9 @@
                     <th scope="col">ID</th>
                     <th scope="col">Structure de recherche</th>
                     <th scope="col">Etablissement</th>
+                    <th scope="col">Telephone</th>
+                    <th scope="col">Description des traveaux</th>
+                    <th scope="col">Pertinence et impact</th>
                     <th scope="col">CRÉÉ À</th>
                 </tr>
             </thead>
@@ -22,6 +25,9 @@
                             <td>{{ $condidat->id }}</td>
                             <td>{{ $condidat->structure_de_recherche }}</td>
                             <td>{{ $condidat->etablissement }}</td>
+                            <td>{{ $condidat->telephone }}</td>
+                            <td>{{ $condidat->description_traveaux }}</td>
+                            <td>{{ $condidat->pertinence_impact }}</td>
                             <td>{{ $condidat->created_at->format('Y-m-d H:i:s') }}</td>
                         </tr>
                     @endforeach

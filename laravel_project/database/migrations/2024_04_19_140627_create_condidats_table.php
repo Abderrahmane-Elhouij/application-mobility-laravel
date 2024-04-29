@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('condidats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('doctorants')->onDelete('cascade');
             $table->string('nom');
             $table->string('prenom');
             $table->string('structure_de_recherche');

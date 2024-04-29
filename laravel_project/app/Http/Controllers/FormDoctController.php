@@ -55,7 +55,7 @@ class FormDoctController extends Controller
     public function submitEnsForm(Request $request)
     {
         $data = $request->all();
-        if (isset($data['nom']) && isset($data['prenom']) && isset($data['structure_de_recherche']) && isset($data['etablissement']) && isset($data['email']) && isset($data['telephone']) && isset($data['description_traveaux']) && isset($data['pertinence_impact']) && isset($data['universite_accueil']) && isset($data['ville']) && isset($data['pays']) && isset($data['date_debut']) && isset($data['date_fin']) && isset($data['carte_mobilite']) && isset($data['joindre_justicatif']) && isset($data['document'])) {
+        if (isset($data['nom']) && isset($data['prenom']) && isset($data['structure_de_recherche']) && isset($data['etablissement']) && isset($data['email']) && isset($data['telephone']) && isset($data['description_traveaux']) && isset($data['pertinence_impact']) && isset($data['universite_dacceuil']) && isset($data['ville']) && isset($data['pays']) && isset($data['date_debut']) && isset($data['date_fin']) && isset($data['carte_mobilite']) ) {
             $enseignant = Enseignant::where('nom', $data['nom'])
                 ->where('prenom', $data['prenom'])
                 ->where('email', $data['email'])

@@ -64,6 +64,7 @@
         <button type="button" onclick="authenticateWithGoogle()" class="login-with-google-btn">Continue avec
             Google</button>
 
+        </form>
         @if ($errors->has('email'))
             <div class="alert alert-danger">
                 {{ $errors->first('email') }}

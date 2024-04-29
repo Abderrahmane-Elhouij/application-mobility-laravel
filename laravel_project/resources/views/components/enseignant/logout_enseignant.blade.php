@@ -159,7 +159,7 @@
 
     <a href="/dashboard/view/welcome" class="home-link">
         <span class="button-icon">&#x1F3E0;</span>
-        Home
+        Accueil
     </a>
     <div class="button-container">
         <a href="{{ route('generateEnsPDF') }}" class="download-link" target="_blank">télécharger la candidature</a>

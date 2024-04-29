@@ -6,13 +6,22 @@ services:
       context: ./laravel_project
       dockerfile: Dockerfile
     ports:
-      - "8080:8000"  
+      - "8000:8000"  
     volumes:
       - ./laravel_project/storage:/var/www/html/storage  
     depends_on:
       - mobilite-project-db
     networks:
       - mobility
+    environment:
+      MAIL_MAILER: smtp
+      MAIL_HOST: sandbox.smtp.mailtrap.io
+      MAIL_PORT: 2525
+      MAIL_USERNAME: 852b7db95da8e1
+      MAIL_PASSWORD: a8c3a95208b937
+      MAIL_ENCRYPTION: null
+      MAIL_FROM_ADDRESS: "abdoel132003@gmail.com"
+      MAIL_FROM_NAME: "${APP_NAME}"
 
   mobilite-project-db:
     image: mysql:latest
@@ -43,27 +52,5 @@ volumes:
 networks:
   mobility:
 
-
-#docker-compose exec laravel-mobility-app php artisan migrate
-# version: "3"
-
-# services:
-#   laravel:
-#     build:
-#       context: ./laravel_project_backend
-#       dockerfile: Dockerfile
-#     ports:
-#       - "8000:8000"
-#     volumes:
-#       - ./laravel_project_backend:/var/www/html
-#     depends_on:
-#       - mysql
-
-#   mysql:
-#     image: mysql:latest
-#     ports:
-#       - "3306:3306"
-#     environment:
-#       MYSQL_DATABASE: 'projet_de_stage'
-#       MYSQL_USER: 'root'
-#       MYSQL_ROOT_PASSWORD: ''
+# migrate db
+# docker-compose exec laravel-mobility-app php artisan migrate

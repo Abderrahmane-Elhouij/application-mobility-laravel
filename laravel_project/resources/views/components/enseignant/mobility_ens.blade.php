@@ -101,12 +101,12 @@
         </div>
         <div class="form-group">
             <label for="structure">Structure de recherche :</label>
-            <input type="text" class="form-control" name="structure_de_recherche" id="structure" value="{{ old('structurec') }}">
+            <input type="text" class="form-control" name="structure_de_recherche" id="structure" value="{{ old('structure_de_recherche') }}">
         </div>
         <div class="form-group">
             <label for="etablissement">Établissement :</label>
             <input type="text" class="form-control" name="etablissement" id="etablissement"
-                value="{{ old('etablissementc') }}" placeholder="Établissement 1, Établissement 2, ...">
+                value="{{ old('etablissement') }}" placeholder="Établissement 1, Établissement 2, ...">
         </div>
         <div class="form-group">
             <label for="email">E-mail :</label>
@@ -120,10 +120,10 @@
         </div>
 
         <h3>Description des travaux de recherche et résultats attendus durant la mobilité</h3>
-        <textarea class="form-control" name="description_traveaux" id="description_travaux" cols="30" rows="6">{{ old('description_travauxc') }}</textarea>
+        <textarea class="form-control" name="description_traveaux" id="description_travaux" cols="30" rows="6">{{ old('description_traveaux') }}</textarea>
 
         <h3>Pertinence et impact</h3>
-        <textarea class="form-control" name="pertinence_impact" id="pertinence_impact" cols="30" rows="6">{{ old('pertinence_impactc') }}</textarea>
+        <textarea class="form-control" name="pertinence_impact" id="pertinence_impact" cols="30" rows="6">{{ old('pertinence_impact') }}</textarea>
 
         <h3>Structure d'accueil pour la mobilité</h3>
         <div class="form-group">
@@ -134,23 +134,23 @@
         <div class="form-group">
             <label for="ville_accueil">Ville :</label>
             <input type="text" class="form-control" name="ville" id="ville_accueil"
-                value="{{ old('ville_accueil') }}">
+                value="{{ old('ville') }}">
         </div>
         <div class="form-group">
             <label for="pays_accueil">Pays :</label>
             <input type="text" class="form-control" name="pays" id="pays_accueil"
-                value="{{ old('pays_accueil') }}">
+                value="{{ old('pays') }}">
         </div>
         <div class="form-group">
             <label for="date_debut_sejour">Date de séjour :</label><br>
             <label for="date_debut_sejour">Du :</label>
             <input type="date" class="form-control" name="date_debut" id="date_debut_sejour"
-                value="{{ old('date_debut_sejour') }}">
+                value="{{ old('date_debut') }}">
         </div>
         <div class="form-group">
             <label for="date_fin_sejour">Au :</label>
             <input type="date" class="form-control" name="date_fin" id="date_fin_sejour"
-                value="{{ old('date_fin_sejour') }}">
+                value="{{ old('date_fin') }}">
         </div>
         <div class="form-group">
             <label for="cadre_mob">Cadre de la mobilité :</label>
@@ -163,7 +163,7 @@
         <div class="form-group">
             <label for="justificatif">Infos supplémentaire</label>
             <input type="text" class="form-control" name="joindre_justicatif" id="justificatif"
-                value="{{ old('justificatif') }}">
+                value="{{ old('joindre_justicatif') }}">
         </div>
 
         <div class="form-group">
