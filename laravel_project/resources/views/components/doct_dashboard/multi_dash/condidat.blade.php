@@ -16,7 +16,7 @@
             </thead>
             <tbody>
                 @php
-                    $condidats = \App\Models\Condidat::where('user_id', auth()->id())->get();
+                    $condidats = \App\Models\Condidat::where('user_id', auth()->id())->paginate(3);
                 @endphp
                 @if ($condidats->count() > 0)
                     @foreach ($condidats->sortByDesc('created_at') as $condidat)
@@ -36,5 +36,6 @@
                 @endif
             </tbody>
         </table>
+        {{ $condidats->links() }}
     </div>
 @endsection

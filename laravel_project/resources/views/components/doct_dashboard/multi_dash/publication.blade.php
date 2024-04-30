@@ -24,7 +24,7 @@
             </thead>
             <tbody>
                 @php
-                    $publications = \App\Models\Publication_revue::where('user_id', auth()->id())->get();
+                    $publications = \App\Models\Publication_revue::where('user_id', auth()->id())->paginate(3);
                 @endphp
                 @if ($publications->count() > 0)
                     @foreach ($publications->sortByDesc('created_at') as $publication)
@@ -47,6 +47,8 @@
                 @endif
             </tbody>
         </table>
+
+        {{ $publications->links() }}
 
         <button type="button" class="btn mt-3" id="toggleForm" style="background-color: #8b4513; color:white;">Ajouter une
             publication</button>

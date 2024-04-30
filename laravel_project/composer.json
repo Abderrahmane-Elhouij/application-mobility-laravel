@@ -10,6 +10,7 @@
         "dompdf/dompdf": "^2.0",
         "grosv/laravel-passwordless-login": "^1.9",
         "guzzlehttp/guzzle": "^7.2",
+        "itsgoingd/clockwork": "^5.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/socialite": "^5.13",

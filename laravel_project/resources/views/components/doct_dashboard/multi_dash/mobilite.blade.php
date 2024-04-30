@@ -19,7 +19,7 @@
             </thead>
             <tbody>
                 @php
-                    $mobilites = \App\Models\Mobilite::where('user_id', auth()->id())->get();
+                    $mobilites = \App\Models\Mobilite::where('user_id', auth()->id())->paginate(3);
                 @endphp
                 @if ($mobilites->count() > 0)
                     @foreach ($mobilites->sortByDesc('created_at') as $mobilite)
@@ -43,5 +43,6 @@
                 @endif
             </tbody>
         </table>
+        {{ $mobilites->links() }}
     </div>
 @endsection

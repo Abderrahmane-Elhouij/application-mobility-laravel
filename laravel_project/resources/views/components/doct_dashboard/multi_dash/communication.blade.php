@@ -21,7 +21,9 @@
             </thead>
             <tbody>
                 @php
-                    $communications = \App\Models\Communication_manifestation::where('user_id', auth()->id())->get();
+                    $communications = \App\Models\Communication_manifestation::where('user_id', auth()->id())->paginate(
+                        3,
+                    );
                 @endphp
                 @if ($communications->count() > 0)
                     @foreach ($communications->sortByDesc('created_at') as $communication)
@@ -41,6 +43,8 @@
                 @endif
             </tbody>
         </table>
+
+        {{ $communications->links() }}
 
         <button type="button" style="background-color: #8b4513; color:white;" class="btn mt-3" id="toggleForm">Ajouter une
             communication</button>

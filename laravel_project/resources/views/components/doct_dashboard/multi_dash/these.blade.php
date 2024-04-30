@@ -18,7 +18,7 @@
             </thead>
             <tbody>
                 @php
-                    $theses = \App\Models\These::where('user_id', auth()->id())->get();
+                    $theses = \App\Models\These::where('user_id', auth()->id())->paginate(3);
                 @endphp
                 @if ($theses->count() > 0)
                     @foreach ($theses->sortByDesc('created_at') as $these)
@@ -31,7 +31,7 @@
                             <td>{{ $these->description_sujet }}</td>
                             <td>{{ $these->description_traveaux }}</td>
                             <td>{{ $these->pertience_et_Impact }}</td>
-                            <td>{{ $these->created_at->format('Y-m-d H:i:s') }}</td> 
+                            <td>{{ $these->created_at->format('Y-m-d H:i:s') }}</td>
                         </tr>
                     @endforeach
                 @else
@@ -41,6 +41,7 @@
                 @endif
             </tbody>
         </table>
+        {{ $theses->links() }}
     </div>
 
 @endsection
