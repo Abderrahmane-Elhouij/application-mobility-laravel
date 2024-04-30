@@ -20,7 +20,7 @@
             padding: 20px;
             border: 1px solid #8B4513;
             border-radius: 10px;
-            background-color: #fff;
+            background-color: #f8f9fa;
             margin-left: 18%;
         }
 
@@ -72,6 +72,15 @@
         ul {
             color: red;
         }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("{{ asset('images/background.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            /* background-color: #f8f9fa; */
+        }
     </style>
 </head>
 
@@ -101,7 +110,8 @@
         </div>
         <div class="form-group">
             <label for="structure">Structure de recherche :</label>
-            <input type="text" class="form-control" name="structure_de_recherche" id="structure" value="{{ old('structure_de_recherche') }}">
+            <input type="text" class="form-control" name="structure_de_recherche" id="structure"
+                value="{{ old('structure_de_recherche') }}">
         </div>
         <div class="form-group">
             <label for="etablissement">Établissement :</label>
@@ -115,8 +125,7 @@
         </div>
         <div class="form-group">
             <label for="email">Telephone :</label>
-            <input type="text" class="form-control" name="telephone" id="telephone"
-                value="{{ old('telephone') }}">
+            <input type="text" class="form-control" name="telephone" id="telephone" value="{{ old('telephone') }}">
         </div>
 
         <h3>Description des travaux de recherche et résultats attendus durant la mobilité</h3>
@@ -133,13 +142,11 @@
         </div>
         <div class="form-group">
             <label for="ville_accueil">Ville :</label>
-            <input type="text" class="form-control" name="ville" id="ville_accueil"
-                value="{{ old('ville') }}">
+            <input type="text" class="form-control" name="ville" id="ville_accueil" value="{{ old('ville') }}">
         </div>
         <div class="form-group">
             <label for="pays_accueil">Pays :</label>
-            <input type="text" class="form-control" name="pays" id="pays_accueil"
-                value="{{ old('pays') }}">
+            <input type="text" class="form-control" name="pays" id="pays_accueil" value="{{ old('pays') }}">
         </div>
         <div class="form-group">
             <label for="date_debut_sejour">Date de séjour :</label><br>

@@ -20,6 +20,8 @@ class DoctorantController extends Controller
 
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    //protected $guard = 'enseignant';
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

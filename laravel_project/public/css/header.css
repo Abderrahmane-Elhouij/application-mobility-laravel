@@ -6,13 +6,13 @@
     display: flex;
     align-items: center;
     background-color: rgb(247, 208, 175);
+    width: 100%;
 }
 
 .container img {
     width: auto;
     height: 100%;
     object-fit: contain;
-    /* Ensure the image fits within the container */
 }
 
 .thick-text {
@@ -22,18 +22,13 @@
 
 .center-column {
     flex-grow: 1;
-    /* Expand to fill available space */
     text-align: center;
-    /* Center text */
     padding: 0 20px;
-    /* Add padding to center column */
     width: 40%;
-    /* Set the width of the center column */
 }
 
 .center-column > div {
     margin-bottom: 10px;
-    /* Add spacing between text */
 }
 
 .col {
@@ -43,26 +38,20 @@
     border: 1px solid black;
     height: 100%;
     width: 30%;
-    /* Set the width of the side columns */
 }
 
 @media (max-width: 768px) {
     .container {
         height: auto;
-        /* Adjust height for smaller screens */
         flex-direction: column;
-        /* Stack columns vertically */
     }
 
     .col {
         width: 100%;
-        /* Set full width for smaller screens */
         flex: none;
-        /* Disable flex grow for smaller screens */
     }
 
     .center-column {
         width: 100%;
-        /* Set full width for smaller screens */
     }
 }

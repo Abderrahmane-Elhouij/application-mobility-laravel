@@ -7,6 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("{{ asset('images/background.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            /* background-color: #f8f9fa; */
+        }
+
         .home-link {
             background-color: brown;
             color: white;
@@ -45,6 +54,7 @@
             display: flex;
             align-items: center;
             /* Center items vertically */
+            background-color: rgb(247, 208, 175);
         }
 
         .container img {

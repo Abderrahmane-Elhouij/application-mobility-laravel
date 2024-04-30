@@ -14,7 +14,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 200px;
+            height: 400px;
         }
 
         /* Style for the button-like anchor tags */
@@ -49,6 +49,17 @@
             text-align: center;
             padding: 10px;
             margin-bottom: 20px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("{{ asset('images/background.jpg') }}");
+            /* Replace 'background.jpg' with your image file */
+            background-size: cover;
+            /* Cover the entire background */
+            background-position: center;
+            /* Center the background */
         }
     </style>
 </head>

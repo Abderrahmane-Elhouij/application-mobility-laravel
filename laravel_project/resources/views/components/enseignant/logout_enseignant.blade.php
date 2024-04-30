@@ -7,6 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("{{ asset('images/background.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            /* background-color: #f8f9fa; */
+        }
+
         .home-link {
             background-color: brown;
             color: white;
@@ -37,6 +46,7 @@
         }
 
         .container {
+            background-color: rgb(247, 208, 175);
             border: 2px solid black;
             border-radius: 5px;
             overflow: hidden;

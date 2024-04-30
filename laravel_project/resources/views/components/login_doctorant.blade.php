@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="{{ asset('css/doctorantCss/login.css') }}">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("{{ asset('images/background.jpg') }}");
+            background-size: cover;
+            background-position: center;
+        }
+
         .alert {
             padding: 15px;
             margin-bottom: 20px;
@@ -28,7 +36,6 @@
             border-color: #f5c6cb;
         }
 
-        /* Optional: Style error messages */
 
         .error-message {
             color: #721c24;
@@ -37,45 +44,55 @@
             margin-top: 5px;
             display: block;
         }
+
+        h1 {
+            color: rgb(255, 255, 255);
+        }
+        .up{
+            margin-top: 100px;
+        }
     </style>
 </head>
 
 <body>
     @include('partials.header')
-    @if (isset($email) && $email != '')
-        <h1>Entrez votre adresse email</h1>
-        <form action="{{ route('sub.doctorant') }}" method="POST" onsubmit="return validateEmail()">
-            @csrf
+    <div class="up">
+        @if (isset($email) && $email != '')
 
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" value="{{ $email }}">
-            <span class="error-message" id="emailError"></span>
-            <button type="submit" class="btn btn-secondary" name="submit" value="magic-link">
-                Se connecter
-            </button>
+            <h1>Entrez votre adresse email</h1>
+            <form action="{{ route('sub.doctorant') }}" method="POST" onsubmit="return validateEmail()">
+                @csrf
 
-        </form>
-        @if ($errors->has('email'))
-            <div class="alert alert-danger">
-                {{ $errors->first('email') }}
-            </div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" value="{{ $email }}">
+                <span class="error-message" id="emailError"></span>
+                <button type="submit" class="btn btn-secondary" name="submit" value="magic-link">
+                    Se connecter
+                </button>
+
+            </form>
+            @if ($errors->has('email'))
+                <div class="alert alert-danger">
+                    {{ $errors->first('email') }}
+                </div>
+            @endif
+        @else
+            <button type="button" onclick="authenticateWithGoogle()" class="login-with-google-btn">Continue avec
+                Google</button>
+
+            </form>
+            @if ($errors->has('email'))
+                <div class="alert alert-danger">
+                    {{ $errors->first('email') }}
+                </div>
+            @elseif ($message = session('message'))
+                <div class="alert alert-success">
+                    {{ $message }}
+                </div>
+            @endif
+
         @endif
-    @else
-        <button type="button" onclick="authenticateWithGoogle()" class="login-with-google-btn">Continue avec
-            Google</button>
-
-        </form>
-        @if ($errors->has('email'))
-            <div class="alert alert-danger">
-                {{ $errors->first('email') }}
-            </div>
-        @elseif ($message = session('message'))
-            <div class="alert alert-success">
-                {{ $message }}
-            </div>
-        @endif
-
-    @endif
+    </div>
     <script>
         function authenticateWithGoogle() {
             window.location.href = "{{ route('google_auth') }}";
