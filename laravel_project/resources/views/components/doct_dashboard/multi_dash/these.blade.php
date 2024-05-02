@@ -28,9 +28,15 @@
                             <td>{{ $these->nom_encadrant }}</td>
                             <td>{{ $these->prenom_encadrant }}</td>
                             <td>{{ $these->date_inscription }}</td>
-                            <td>{{ $these->description_sujet }}</td>
-                            <td>{{ $these->description_traveaux }}</td>
-                            <td>{{ $these->pertience_et_Impact }}</td>
+                            <td>
+                                <div style="max-height: 50px; overflow-y: auto;">{{ $these->description_sujet }}</div>
+                            </td>
+                            <td>
+                                <div style="max-height: 50px; overflow-y: auto;">{{ $these->description_traveaux }}</div>
+                            </td>
+                            <td>
+                                <div style="max-height: 50px; overflow-y: auto;">{{ $these->pertience_et_Impact }}</div>
+                            </td>
                             <td>{{ $these->created_at->format('Y-m-d H:i:s') }}</td>
                         </tr>
                     @endforeach
