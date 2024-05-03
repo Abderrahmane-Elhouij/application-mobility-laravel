@@ -8,7 +8,7 @@
                     @php
                         $condidatCount = \App\Models\Condidat::where('user_id', auth()->id())->count();
                         $mobiliteCount = \App\Models\Mobilite::where('user_id', auth()->id())->count();
-                        $publicationCount = \App\Models\PublicationEns::where('user_id', auth()->id())->count();
+                        $publicationCount = \App\Models\Publication_revue::where('user_id', auth()->id())->count();
                         $communicationCount = \App\Models\Communication_manifestation::where(
                             'user_id',
                             auth()->id(),
