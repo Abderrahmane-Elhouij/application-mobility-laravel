@@ -6,7 +6,7 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th scope="col">ID</th> <!-- New column for ID -->
+                    <th scope="col">ID</th> 
                     <th scope="col">Université d'Accueil</th>
                     <th scope="col">Ville</th>
                     <th scope="col">Pays</th>
@@ -14,7 +14,7 @@
                     <th scope="col">Date Fin</th>
                     <th scope="col">Carte Mobilité</th>
                     <th scope="col">Joindre Justificatif</th>
-                    <th scope="col">Créé à</th> <!-- New column for created_at -->
+                    <th scope="col">Créé à</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,7 +24,7 @@
                 @if ($mobilites->count() > 0)
                     @foreach ($mobilites->sortByDesc('created_at') as $mobilite)
                         <tr>
-                            <td>{{ $mobilite->id }}</td> <!-- ID column -->
+                            <td>{{ $mobilite->id }}</td>
                             <td>{{ $mobilite->universite_dacceuil }}</td>
                             <td>{{ $mobilite->ville }}</td>
                             <td>{{ $mobilite->pays }}</td>
@@ -33,12 +33,11 @@
                             <td>{{ $mobilite->carte_mobilite }}</td>
                             <td>{{ $mobilite->joindre_justicatif }}</td>
                             <td>{{ $mobilite->created_at->format('Y-m-d H:i:s') }}</td>
-                            <!-- Format the created_at date -->
                         </tr>
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="10">No data available</td> <!-- colspan increased to 10 for the new columns -->
+                        <td colspan="10">No data available</td>
                     </tr>
                 @endif
             </tbody>
